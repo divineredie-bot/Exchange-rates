@@ -1,0 +1,230 @@
+:root {
+    --bg-1: #0b0f16;
+    --bg-2: #141b28;
+    --text: #f4f6fb;
+    --text-alt: #4f555e;
+    --muted: #97a4b7;
+    --accent: #ff6b6b;
+    --accent-2: #2b7fff;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+    overflow: hidden;
+}
+
+.container {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 5vh 6vw 6vh;
+    gap: 24px;
+}
+
+
+
+.title {
+    margin: 0;
+    font-size: clamp(2rem, 4.4vw, 3.6rem);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.info-container {
+    width: min(100%, 900px);
+    padding: 30px 34px;
+    border-radius: 24px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 24, 0.92);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.controls-wrapper {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 14px;
+    align-items: center;
+}
+
+.select-control {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 600;
+    appearance: none;
+    cursor: pointer;
+}
+
+.select-control:focus {
+    outline: none;
+    border-color: rgba(255, 255, 255, 0.22);
+}
+
+.swap-btn {
+    border: none;
+    padding: 10px 15px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #659be2 0%, #235392 100%);
+    color: white;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.swap-btn:hover {
+    background: linear-gradient(135deg, #3671be 0%, #2a5fa4 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px);
+}
+
+.swap-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+[data-comparison-info] {
+    margin: 16px 0 0;
+    min-height: 58px;
+    padding: 14px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.08);
+    background: rgba(255,255,255,0.03);
+    color: #dfe6ef;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+/* Dropdown / option visual fixes (improve contrast and scrollbar) */
+.select-control,
+.select-control option {
+    background: var(--panel);
+    color: var(--text);
+}
+
+.select-control option {
+    padding: 8px 10px;
+    font-weight: 600;
+    color: var(--text-alt);
+}
+
+/* Selected option inside native dropdown */
+.select-control option:checked,
+.select-control option[selected] {
+    background: linear-gradient(90deg, rgba(255,107,107,0.14), rgba(43,127,255,0.12));
+    color: var(--text-alt);
+}
+
+/* WebKit scrollbar styling for dropdowns */
+.select-control::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.select-control::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.02);
+}
+
+.select-control::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.12);
+    border-radius: 8px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+}
+
+/* Improve legibility for optgroups if present */
+.select-control optgroup {
+    color: var(--muted);
+    font-weight: 700;
+}
+
+@media (max-width: 900px) {
+    .container {
+        padding: 32px 24px 36px;
+        gap: 20px;
+    }
+
+    .logo {
+        width: min(600px, 70vw);
+    }
+
+    .title {
+        font-size: clamp(1.6rem, 4vw, 2.6rem);
+        letter-spacing: 0.12em;
+    }
+
+    .info-container {
+        padding: 24px 22px;
+    }
+}
+
+@media (max-width: 640px) {
+    body {
+        overflow: auto;
+    }
+
+    .container {
+        min-height: auto;
+        justify-content: flex-start;
+        padding: 24px 16px 28px;
+        gap: 16px;
+    }
+
+    .logo {
+        width: min(500px, 70vw);
+    }
+
+    .title {
+        font-size: clamp(1.25rem, 5.2vw, 1.8rem);
+        letter-spacing: 0.1em;
+    }
+
+    .info-container {
+        width: 100%;
+        padding: 18px 16px;
+        border-radius: 18px;
+    }
+
+    .controls-wrapper {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .select-control {
+        padding: 12px 14px;
+        font-size: 0.95rem;
+    }
+
+    .swap-btn {
+        justify-self: center;
+        width: fit-content;
+        padding: 9px 13px;
+        font-size: 0.76rem;
+    }
+
+    [data-comparison-info] {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+    }
+}
